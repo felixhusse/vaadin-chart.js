@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 fatalix.
+ * Copyright 2014 Fatalix.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,15 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.vaadin.addons.chart.js;
-
-import com.vaadin.shared.ui.JavaScriptComponentState;
 
 /**
  *
- * @author felix.husse
+ * @author Fatalix
  */
-public class ChartJSState extends JavaScriptComponentState{
-    public ChartData chartData;
+public class ChartData {
+    
+    private final ChartConfiguration chartConfiguration;
+    private final int componentID;
+    
+    public ChartData(int componentID) {
+        this.chartConfiguration = new ChartConfiguration();
+        this.componentID = componentID;
+    }
+
+    public ChartConfiguration getChartConfiguration() {
+        return chartConfiguration;
+    }
+
+    public int getComponentID() {
+        return componentID;
+    }
+    
 }
