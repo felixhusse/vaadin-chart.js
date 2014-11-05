@@ -16,7 +16,7 @@
 window.org_vaadin_addons_chart_js_ChartJS = function () {
     var e = this.getElement();
     var self = this;
-    
+    var myNewChart;
     this.onStateChange = function () {
         var state = this.getState();
         console.log(state);
@@ -85,7 +85,18 @@ window.org_vaadin_addons_chart_js_ChartJS = function () {
            legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
         }; 
         var ctx = document.getElementById(id).getContext("2d");
-        var myNewChart = new Chart(ctx).Line(data,options);
+        myNewChart = new Chart(ctx).Line(data,options);
+    };
+    
+    window.onresize = function(event) {
+        var cs = getComputedStyle(e);
+        var width = parseInt(cs.getPropertyValue('width'), 10);
+        var height = parseInt(cs.getPropertyValue('height'), 10);
+        /// now use this as width and height for your canvas element:
+        var chartCanvas = document.getElementById('myChart');
+        chartCanvas.width = width;
+        chartCanvas.height = height;
+        myNewChart.resize();
     };
 
 };
