@@ -15,7 +15,7 @@
 	
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <vaadin.version>7.3.0</vaadin.version>
+        <vaadin.version>7.3.3</vaadin.version>
         <vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
     </properties>
 
@@ -60,30 +60,30 @@
     <dependencies>
         <dependency>
             <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-push</artifactId>
-            <version>${vaadin.version}</version>
+            <artifactId>vaadin-server</artifactId> 
+            <version>${vaadin.version}</version>           
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
-            <!--<artifactId>vaadin-client-compiler</artifactId>-->
-            <artifactId>vaadin-client-compiled</artifactId>
-            <version>${vaadin.version}</version>
+            <artifactId>vaadin-shared</artifactId>    
+            <version>${vaadin.version}</version>        
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-themes</artifactId>
-            <version>${vaadin.version}</version>
+            <version>${vaadin.version}</version>            
         </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-client-compiled</artifactId>   
+            <version>${vaadin.version}</version>         
+        </dependency>
+        
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.0.1</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>2.3</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -106,38 +106,19 @@
             </plugin>
 
             <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>2.4.1</version>
-                <configuration>
-                    <filesets>
-                        <fileset>
-                            <!-- Clean-up widgetset required for "inplace" compilation -->
-                            <directory>${basedir}/src/main/webapp/VAADIN/widgetsets</directory>
-                        </fileset>
-                        <fileset>
-                            <!-- Clean-up gwt cache -->
-                            <directory>${basedir}/src/main/webapp/VAADIN/gwt-unitCache</directory>
-                        </fileset>
-                    </filesets>
-                </configuration>
-            </plugin>
-
-            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.3</version>
                 <configuration>
-                    <packagingExcludes>
-                        **/VAADIN/gwt-unitCache/**,
-                        **/VAADIN/widgetsets/WEB-INF/**,
-                        **/WEB-INF/lib/servlet-api-*.jar,
-                        **/WEB-INF/lib/vaadin-client-*.jar,
-                        **/WEB-INF/lib/jetty-*.jar,
-                        **/WEB-INF/lib/ant-*.jar,
-                        **/WEB-INF/classes/gwt-unitCache/**,
-                        **/WEB-INF/classes/themes/**,
-                        **/WEB-INF/classes/widgetsets/**
-                    </packagingExcludes>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <webResources>
+                        <resource>
+                            <filtering>true</filtering>
+                            <directory>src/main/webapp</directory>
+                            <includes>
+                                <include>**/*.xml</include>
+                            </includes>
+                        </resource>
+                    </webResources>
                 </configuration>
             </plugin>
 
@@ -162,9 +143,10 @@
                             <!-- if you don't specify any modules, the plugin will find them -->
                         </configuration>
                         <goals>
+                            <goal>clean</goal>
                             <goal>resources</goal>
-                            <goal>update-widgetset</goal>
-                            <goal>compile</goal>
+                            <goal>update-theme</goal>
+                            <goal>compile-theme</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -182,43 +164,6 @@
             </plugin>
 
         </plugins>
-
-        <pluginManagement>
-            <plugins>
-                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>com.vaadin</groupId>
-                                        <artifactId>vaadin-maven-plugin</artifactId>
-                                        <versionRange>
-                                            [${vaadin.plugin.version},)
-                                        </versionRange>
-                                        <goals>
-                                            <goal>resources</goal>
-                                            <goal>update-widgetset</goal>
-                                            <goal>compile</goal>
-                                            <goal>update-theme</goal>
-                                            <goal>compile-theme</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore></ignore>
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-
     </build>
 
 </project>

@@ -31,9 +31,11 @@ public class ChartJS extends AbstractJavaScriptComponent{
     
     public ChartJS() {
         super();
+        
         componentId = componentCount;
+        setId("chartjs-wrapper-"+componentId);
         componentCount++;
-
+        getState().componentId = componentId;
     }
     
     @Override

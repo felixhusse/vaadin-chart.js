@@ -14,4 +14,11 @@
                 <goal>jetty:stop</goal>
             </goals>
         </action>
+        <action>
+            <actionName>CUSTOM-compile-theme</actionName>
+            <displayName>compile-theme</displayName>
+            <goals>
+                <goal>vaadin:compile-theme</goal>
+            </goals>
+        </action>
     </actions>
