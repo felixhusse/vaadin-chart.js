@@ -34,7 +34,13 @@ public class ChartJS extends AbstractJavaScriptComponent{
         componentId = componentCount;
         setId("chartjs-wrapper-"+componentId);
         componentCount++;
-        getState().chartData = new ChartData(componentId);
+        getState().chartData = new ChartData();
+        getState().chartData.chartConfiguration = new ChartConfiguration();
+        getState().chartData.componentID = componentId;
+    }
+    
+    public void initChart() {
+        
     }
     
     @Override

@@ -21,20 +21,8 @@ package org.vaadin.addons.chart.js;
  */
 public class ChartData {
     
-    private final ChartConfiguration chartConfiguration;
-    private final int componentID;
-    
-    public ChartData(int componentID) {
-        this.chartConfiguration = new ChartConfiguration();
-        this.componentID = componentID;
-    }
+    public ChartConfiguration chartConfiguration;
+    public int componentID;
 
-    public ChartConfiguration getChartConfiguration() {
-        return chartConfiguration;
-    }
-
-    public int getComponentID() {
-        return componentID;
-    }
     
 }

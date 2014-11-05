@@ -38,10 +38,9 @@ public class DemoUI extends UI {
             final VerticalLayout layout = new VerticalLayout();
             layout.setStyleName("demoContentLayout");
             final ChartJS chartJS = new ChartJS();
-            chartJS.setSizeFull();
-            //chartJS.setHeight(400, Unit.PIXELS);
-            //chartJS.setWidth(600, Unit.PIXELS);
-
+            chartJS.setHeight(400, Unit.PIXELS);
+            chartJS.setWidth(600, Unit.PIXELS);
+            //chartJS.initChart();
 
             layout.addComponents(chartJS);
             layout.setExpandRatio(chartJS, 1.0f);
