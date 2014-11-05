@@ -15,17 +15,21 @@
  */
 window.org_vaadin_addons_chart_js_ChartJS = function () {
     var e = this.getElement();
-
+    var self = this;
+    
     this.onStateChange = function () {
-        initChartJS('myChart');
+        var state = this.getState();
+        console.log(state);
+        initChartJS("myChart");
     };
 
 
 
     initChartJS = function (id) {
-    
-        e.innerHTML = e.innerHTML + "<canvas id='"+id+"' width='400' height='400'></canvas>";
-        
+        var cs = getComputedStyle(e);
+        var width = parseInt(cs.getPropertyValue('width'), 10);
+        var height = parseInt(cs.getPropertyValue('height'), 10);
+        e.innerHTML = e.innerHTML + "<canvas id='"+id+"' width='"+width+"' height='"+height+"'></canvas>";
         var data = {
             labels: ["January", "February", "March", "April", "May", "June", "July"],
             datasets: [
