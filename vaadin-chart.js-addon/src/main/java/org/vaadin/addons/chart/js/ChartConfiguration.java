@@ -29,7 +29,7 @@ public class ChartConfiguration {
     public boolean scaleShowGridLines = true;
    
     //String - Colour of the grid lines
-    public String scaleGridLineColor = "rgba(0,0,0,.05)";
+    public String scaleGridLineColor = "rgba(233,0,0,.05)";
     //Number - Width of the grid lines
     public int scaleGridLineWidth = 1;
     //Boolean - Whether the line is curved between points

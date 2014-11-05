@@ -39,9 +39,6 @@ public class ChartJS extends AbstractJavaScriptComponent{
         getState().chartData.componentID = componentId;
     }
     
-    public void initChart() {
-        
-    }
     
     @Override
     protected ChartJSState getState() {
