@@ -8,6 +8,7 @@ import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import org.vaadin.addons.chart.js.ChartJS;
@@ -38,11 +39,12 @@ public class DemoUI extends UI {
             final VerticalLayout layout = new VerticalLayout();
             layout.setStyleName("demoContentLayout");
             final ChartJS chartJS = new ChartJS();
-            chartJS.setHeight(400, Unit.PIXELS);
-            chartJS.setWidth(600, Unit.PIXELS);
+            
+            //chartJS.setHeight(400, Unit.PIXELS);
+            //chartJS.setWidth(600, Unit.PIXELS);
             //chartJS.initChart();
 
-            layout.addComponents(chartJS);
+            layout.addComponents(chartJS,new Label("Hello World"));
             layout.setExpandRatio(chartJS, 1.0f);
             layout.setComponentAlignment(chartJS, Alignment.MIDDLE_CENTER);
             layout.setSizeFull();

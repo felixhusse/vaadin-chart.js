@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-jrebel generate</actionName>
+            <displayName>jrebel generate</displayName>
+            <goals>
+                <goal>jrebel:generate</goal>
+            </goals>
+        </action>
+    </actions>

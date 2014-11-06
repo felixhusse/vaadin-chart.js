@@ -6,6 +6,9 @@
             <goals>
                 <goal>jetty:run</goal>
             </goals>
+            <properties>
+                <Env.MAVEN_OPTS>-javaagent:/Users/felix/jrebel/jrebel.jar</Env.MAVEN_OPTS>
+            </properties>
         </action>
         <action>
             <actionName>CUSTOM-Stop Jetty</actionName>
@@ -19,6 +22,13 @@
             <displayName>compile-theme</displayName>
             <goals>
                 <goal>vaadin:compile-theme</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-jrebel-generate</actionName>
+            <displayName>jrebel-generate</displayName>
+            <goals>
+                <goal>jrebel:generate</goal>
             </goals>
         </action>
     </actions>
