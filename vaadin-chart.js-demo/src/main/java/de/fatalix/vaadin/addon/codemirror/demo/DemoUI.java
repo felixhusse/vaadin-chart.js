@@ -11,6 +11,7 @@ import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import org.vaadin.addons.chart.js.ChartConfiguration;
 import org.vaadin.addons.chart.js.ChartJS;
 
 @Theme("demo")
@@ -38,13 +39,16 @@ public class DemoUI extends UI {
             // Show it in the middle of the screen
             final VerticalLayout layout = new VerticalLayout();
             layout.setStyleName("demoContentLayout");
-            final ChartJS chartJS = new ChartJS();
+            ChartConfiguration chartConfiguration = new ChartConfiguration();
+            chartConfiguration.animation = true;
+            chartConfiguration.bezierCurve = false;
+            final ChartJS chartJS = new ChartJS(chartConfiguration);
             
-            //chartJS.setHeight(400, Unit.PIXELS);
-            //chartJS.setWidth(600, Unit.PIXELS);
+            chartJS.setHeight(400, Unit.PIXELS);
+            chartJS.setWidth(600, Unit.PIXELS);
             //chartJS.initChart();
 
-            layout.addComponents(chartJS,new Label("Hello World"));
+            layout.addComponents(chartJS);
             layout.setExpandRatio(chartJS, 1.0f);
             layout.setComponentAlignment(chartJS, Alignment.MIDDLE_CENTER);
             layout.setSizeFull();

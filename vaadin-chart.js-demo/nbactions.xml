@@ -7,7 +7,7 @@
                 <goal>jetty:run</goal>
             </goals>
             <properties>
-                <Env.MAVEN_OPTS>-javaagent:/Users/felix/jrebel/jrebel.jar</Env.MAVEN_OPTS>
+                <Env.MAVEN_OPTS>-javaagent:c:/jrebel/jrebel.jar</Env.MAVEN_OPTS>
             </properties>
         </action>
         <action>

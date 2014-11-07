@@ -23,10 +23,8 @@ window.org_vaadin_addons_chart_js_ChartJS = function () {
         var state = this.getState();
         
         console.log(state.chartData);
-        initChartJS("chartjs-"+state.chartData.componentID);
+        initChartJS(state);
     };
-
-
 
     initChartJS = function (state) {
         var canvasID = "chartjs-"+state.chartData.componentID;
