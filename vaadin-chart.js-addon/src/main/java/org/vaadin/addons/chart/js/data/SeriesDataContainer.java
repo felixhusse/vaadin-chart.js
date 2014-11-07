@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Fatalix.
+ * Copyright 2014 felix.husse.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,18 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.vaadin.addons.chart.js;
+package org.vaadin.addons.chart.js.data;
 
-import org.vaadin.addons.chart.js.data.SeriesDataContainer;
+import java.util.List;
 
 /**
  *
- * @author Fatalix
+ * @author felix.husse
  */
-public class ChartData {
+public class SeriesDataContainer {
     
-    public int componentID;
-    public ChartConfiguration chartConfiguration;
-    public SeriesDataContainer seriesDataContainer;
+    private List<String> labels;
+    private List<AbstractSeriesDataSet> datasets;
 
+    public List<String> getLabels() {
+        return labels;
+    }
+
+    public void setLabels(List<String> labels) {
+        this.labels = labels;
+    }
+
+    public List<AbstractSeriesDataSet> getDatasets() {
+        return datasets;
+    }
+
+    public void setDatasets(List<AbstractSeriesDataSet> datasets) {
+        this.datasets = datasets;
+    }
 }

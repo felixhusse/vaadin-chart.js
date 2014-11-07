@@ -7,12 +7,19 @@ import com.vaadin.annotations.Title;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
+import com.vaadin.shared.ui.colorpicker.Color;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.vaadin.addons.chart.js.ChartConfiguration;
 import org.vaadin.addons.chart.js.ChartJS;
+import org.vaadin.addons.chart.js.data.AbstractSeriesDataSet;
+import org.vaadin.addons.chart.js.data.LineSeriesDataSet;
+import org.vaadin.addons.chart.js.data.SeriesDataContainer;
 
 @Theme("demo")
 @Title("ChartJS Add-on Demo")
@@ -41,10 +48,27 @@ public class DemoUI extends UI {
             layout.setStyleName("demoContentLayout");
             ChartConfiguration chartConfiguration = new ChartConfiguration();
             chartConfiguration.animation = true;
+            chartConfiguration.datasetFill = false;
             chartConfiguration.bezierCurve = false;
-            final ChartJS chartJS = new ChartJS(chartConfiguration);
             
-            chartJS.setHeight(400, Unit.PIXELS);
+            
+            LineSeriesDataSet dataSet = new LineSeriesDataSet();
+            dataSet.label = "Dataset 1";
+            dataSet.setFillColor("rgba(220,220,220,0.2)");
+            dataSet.setStrokeColor("rgba(220,220,220,1)");
+            dataSet.setPointColor("rgba(220,220,220,1)");
+            dataSet.setPointStrokeColor("#fff");
+            dataSet.setPointHighlightFill("#fff");
+            dataSet.setPointHighlightStroke("rgba(220,220,220,1)");
+            dataSet.setData(Arrays.asList(new Float[]{1.01f,0.90f,1.23f,1.14f}));
+            
+            SeriesDataContainer dataContainer = new SeriesDataContainer();
+            dataContainer.setLabels(Arrays.asList(new String[]{"Sprint1","Sprint2","Sprint3","Sprint4"}));
+            dataContainer.setDatasets(Arrays.asList(new AbstractSeriesDataSet[]{dataSet}));
+            
+            final ChartJS chartJS = new ChartJS(chartConfiguration,dataContainer);
+            
+            chartJS.setHeight(340, Unit.PIXELS);
             chartJS.setWidth(600, Unit.PIXELS);
             //chartJS.initChart();
 

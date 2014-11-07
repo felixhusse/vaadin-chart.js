@@ -23,5 +23,7 @@ import com.vaadin.shared.ui.JavaScriptComponentState;
  * @author felix.husse
  */
 public class ChartJSState extends JavaScriptComponentState{
+    
     public ChartData chartData;
+    
 }

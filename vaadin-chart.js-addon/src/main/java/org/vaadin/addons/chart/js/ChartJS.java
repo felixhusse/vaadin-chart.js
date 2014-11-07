@@ -18,6 +18,7 @@ package org.vaadin.addons.chart.js;
 
 import com.vaadin.annotations.JavaScript;
 import com.vaadin.ui.AbstractJavaScriptComponent;
+import org.vaadin.addons.chart.js.data.SeriesDataContainer;
 
 /**
  *
@@ -29,14 +30,16 @@ public class ChartJS extends AbstractJavaScriptComponent{
     
     private final int componentId;
     
-    public ChartJS(ChartConfiguration chartConfiguration) {
+    public ChartJS(ChartConfiguration chartConfiguration, SeriesDataContainer seriesDataContainer) {
         super();
         componentId = componentCount;
         setId("chartjs-wrapper-"+componentId);
         componentCount++;
         ChartData chartData = new ChartData();
-        chartData.chartConfiguration = chartConfiguration;
         chartData.componentID = componentId;
+        chartData.chartConfiguration = chartConfiguration;
+        chartData.seriesDataContainer = seriesDataContainer;
+        
         getState().chartData = chartData;
     }
     

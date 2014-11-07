@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Fatalix.
+ * Copyright 2014 felix.husse.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,15 @@
  */
 package org.vaadin.addons.chart.js;
 
-import org.vaadin.addons.chart.js.data.SeriesDataContainer;
-
 /**
  *
- * @author Fatalix
+ * @author felix.husse
  */
-public class ChartData {
+public enum ChartType {
+    LINE,BAR,RADAR,POLAR,PIE,DOUGHNUT;
     
-    public int componentID;
-    public ChartConfiguration chartConfiguration;
-    public SeriesDataContainer seriesDataContainer;
-
+    
+    private ChartType() {
+        
+    }
 }

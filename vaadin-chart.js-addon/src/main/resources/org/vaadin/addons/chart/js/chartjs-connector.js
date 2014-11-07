@@ -21,8 +21,9 @@ window.org_vaadin_addons_chart_js_ChartJS = function () {
     
     this.onStateChange = function () {
         var state = this.getState();
-        
-        console.log(state.chartData);
+        console.log(state.chartData.seriesDataContainer);
+        console.log(state.chartData.chartConfiguration);
+        console.log(state.chartData.componentID);
         initChartJS(state);
     };
 
@@ -60,7 +61,7 @@ window.org_vaadin_addons_chart_js_ChartJS = function () {
         
         
         var ctx = document.getElementById(canvasID).getContext("2d");
-        myNewChart = new Chart(ctx).Line(data,state.chartData.chartConfiguration);
+        myNewChart = new Chart(ctx).Line(state.chartData.seriesDataContainer,state.chartData.chartConfiguration);
     };
     
 
