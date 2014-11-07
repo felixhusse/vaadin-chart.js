@@ -216,9 +216,9 @@
     </build>
 
     <scm>
-        <connection>scm:git:git@github.com:felixhusse/vaadin-chart.js.git</connection>
-        <url>scm:git:git@github.com:felixhusse/vaadin-chart.js.git</url>
-        <developerConnection>scm:git:git@github.com:felixhusse/vaadin-chart.js.git</developerConnection>
+        <connection>scm:git:ssh://github.com/felixhusse/vaadin-chart.js.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/felixhusse/vaadin-chart.js.git</developerConnection>
+        <url>https://github.com/felixhusse/vaadin-chart.js.git</url>
     </scm>
 
 </project>
