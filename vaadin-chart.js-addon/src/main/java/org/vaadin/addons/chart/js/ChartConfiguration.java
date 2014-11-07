@@ -21,6 +21,26 @@ package org.vaadin.addons.chart.js;
  */
 public class ChartConfiguration {
     
+    // Boolean - If we want to override with a hard coded scale
+    public boolean scaleOverride = false;
+
+    // ** Required if scaleOverride is true **
+    // Number - The number of steps in a hard coded scale
+    public Float scaleSteps = null;
+    // Number - The value jump in the hard coded scale
+    public Float scaleStepWidth=null;
+    // Number - The scale starting value
+    public Float scaleStartValue=null;
+    
+    // Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+    public boolean scaleBeginAtZero= false;
+    
+    // String - Template string for single tooltips
+    public String tooltipTemplate= "<%if (label){%><%=label%>: <%}%><%= value %>";
+
+    // String - Template string for single tooltips
+    public String multiTooltipTemplate = "<%= value %>";
+    
     public boolean animation = true;
     public int animationSteps = 60;
     public String animationEasing = "easeOutQuart";
