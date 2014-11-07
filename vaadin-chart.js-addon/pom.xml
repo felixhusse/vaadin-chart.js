@@ -80,7 +80,6 @@
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -179,17 +178,22 @@
                 <artifactId>jrebel-maven-plugin</artifactId>
                 <version>1.1.5</version>
                 <executions>
-                  <execution>
-                    <id>generate-rebel-xml</id>
-                    <phase>process-resources</phase>
-                    <goals>
-                      <goal>generate</goal>
-                    </goals>
-                  </execution>
+                    <execution>
+                        <id>generate-rebel-xml</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
                 </executions>
-              </plugin>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.4.1</version>
+            </plugin>
         </plugins>
-
+        
         <!-- This is needed for the sources required by the client-side compiler to be
         included in the produced JARs -->
         <resources>
@@ -211,5 +215,10 @@
 
     </build>
 
+    <scm>
+        <connection>scm:git:git@github.com:felixhusse/vaadin-chart.js.git</connection>
+        <url>scm:git:git@github.com:felixhusse/vaadin-chart.js.git</url>
+        <developerConnection>scm:git:git@github.com:felixhusse/vaadin-chart.js.git</developerConnection>
+    </scm>
 
 </project>
