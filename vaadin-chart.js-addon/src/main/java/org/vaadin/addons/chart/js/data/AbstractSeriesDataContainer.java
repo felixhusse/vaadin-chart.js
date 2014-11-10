@@ -21,11 +21,10 @@ import java.util.List;
  *
  * @author felix.husse
  */
-public class SeriesDataContainer {
+public class AbstractSeriesDataContainer {
     
     private List<String> labels;
-    private List<AbstractSeriesDataSet> datasets;
-
+    
     public List<String> getLabels() {
         return labels;
     }
@@ -34,11 +33,7 @@ public class SeriesDataContainer {
         this.labels = labels;
     }
 
-    public List<AbstractSeriesDataSet> getDatasets() {
-        return datasets;
-    }
-
-    public void setDatasets(List<AbstractSeriesDataSet> datasets) {
-        this.datasets = datasets;
-    }
+    
+    
+    
 }

@@ -15,7 +15,10 @@
  */
 package org.vaadin.addons.chart.js;
 
-import org.vaadin.addons.chart.js.data.SeriesDataContainer;
+import org.vaadin.addons.chart.js.data.AbstractSeriesDataContainer;
+import org.vaadin.addons.chart.js.data.BarSeriesDataContainer;
+import org.vaadin.addons.chart.js.data.LineSeriesDataContainer;
+import org.vaadin.addons.chart.js.data.RadarSeriesDataContainer;
 
 /**
  *
@@ -25,6 +28,9 @@ public class ChartData {
     
     public int componentID;
     public ChartConfiguration chartConfiguration;
-    public SeriesDataContainer seriesDataContainer;
+    public ChartType chartType = ChartType.LINE;
+    public LineSeriesDataContainer lineSeriesDataContainer;
+    public BarSeriesDataContainer barSeriesDataContainer;
+    public RadarSeriesDataContainer radarSeriesDataContainer;
 
 }

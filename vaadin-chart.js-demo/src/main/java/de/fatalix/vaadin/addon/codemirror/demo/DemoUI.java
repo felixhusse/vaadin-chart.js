@@ -7,19 +7,14 @@ import com.vaadin.annotations.Title;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.shared.ui.colorpicker.Color;
 import com.vaadin.ui.Alignment;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import org.vaadin.addons.chart.js.ChartConfiguration;
 import org.vaadin.addons.chart.js.ChartJS;
-import org.vaadin.addons.chart.js.data.AbstractSeriesDataSet;
-import org.vaadin.addons.chart.js.data.LineSeriesDataSet;
-import org.vaadin.addons.chart.js.data.SeriesDataContainer;
+import org.vaadin.addons.chart.js.data.RadarSeriesDataSet;
+import org.vaadin.addons.chart.js.data.AbstractSeriesDataContainer;
 
 @Theme("demo")
 @Title("ChartJS Add-on Demo")
@@ -55,7 +50,7 @@ public class DemoUI extends UI {
             chartConfiguration.multiTooltipTemplate = "<%=datasetLabel%>: <%= value %>";
             
             
-            LineSeriesDataSet velocity = new LineSeriesDataSet();
+            RadarSeriesDataSet velocity = new RadarSeriesDataSet();
             velocity.label = "Velocity";
             velocity.setFillColor("#3F596D");
             velocity.setStrokeColor("#3F596D");
@@ -63,9 +58,9 @@ public class DemoUI extends UI {
             velocity.setPointStrokeColor("#fff");
             velocity.setPointHighlightFill("#fff");
             velocity.setPointHighlightStroke("#3F596D");
-            velocity.setData(Arrays.asList(new Float[]{0.78f,1.08f,0.85f,1.21f}));
+            velocity.setData(Arrays.asList(new Float[]{78f,108f,85f,121f}));
             
-            LineSeriesDataSet spDone = new LineSeriesDataSet();
+            RadarSeriesDataSet spDone = new RadarSeriesDataSet();
             spDone.label = "SP Done";
             //dataSet.setFillColor("rgba(220,220,220,0.2)");
             spDone.setStrokeColor("#515602");
@@ -75,7 +70,7 @@ public class DemoUI extends UI {
             spDone.setPointHighlightStroke("#515602");
             spDone.setData(Arrays.asList(new Float[]{57f,90f,71f,52f}));
             
-            LineSeriesDataSet achievment = new LineSeriesDataSet();
+            RadarSeriesDataSet achievment = new RadarSeriesDataSet();
             achievment.label = "Achievment";
             //dataSet.setFillColor("rgba(220,220,220,0.2)");
             achievment.setStrokeColor("#9DAA00");
@@ -84,12 +79,10 @@ public class DemoUI extends UI {
             achievment.setPointHighlightFill("#fff");
             achievment.setPointHighlightStroke("#9DAA00");
             achievment.setData(Arrays.asList(new Float[]{72f,87f,59f,100f}));
-            
-            SeriesDataContainer dataContainer = new SeriesDataContainer();
-            dataContainer.setLabels(Arrays.asList(new String[]{"Sprint1","Sprint2","Sprint3","Sprint4"}));
-            dataContainer.setDatasets(Arrays.asList(new AbstractSeriesDataSet[]{velocity}));
-            
-            final ChartJS chartJS = new ChartJS(chartConfiguration,dataContainer);
+
+            final ChartJS<RadarSeriesDataSet> chartJS = new ChartJS<>(chartConfiguration,
+                    Arrays.asList(new String[]{"Sprint1","Sprint2","Sprint3","Sprint4"}),
+                    Arrays.asList(new RadarSeriesDataSet[]{spDone,velocity,achievment}));
             
             chartJS.setHeight(340, Unit.PIXELS);
             chartJS.setWidth(600, Unit.PIXELS);

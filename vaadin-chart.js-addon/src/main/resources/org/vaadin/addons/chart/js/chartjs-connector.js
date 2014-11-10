@@ -24,6 +24,7 @@ window.org_vaadin_addons_chart_js_ChartJS = function () {
         console.log(state.chartData.seriesDataContainer);
         console.log(state.chartData.chartConfiguration);
         console.log(state.chartData.componentID);
+        console.log(state.chartData.chartType);
         initChartJS(state);
     };
 
@@ -61,7 +62,19 @@ window.org_vaadin_addons_chart_js_ChartJS = function () {
         
         
         var ctx = document.getElementById(canvasID).getContext("2d");
-        myNewChart = new Chart(ctx).Line(state.chartData.seriesDataContainer,state.chartData.chartConfiguration);
+        switch (state.chartData.chartType) {
+            case "LINE":
+                myNewChart = new Chart(ctx).Line(state.chartData.lineSeriesDataContainer,state.chartData.chartConfiguration);
+                break;
+            case "BAR":
+                myNewChart = new Chart(ctx).Bar(state.chartData.barSeriesDataContainer,state.chartData.chartConfiguration);
+                break;
+            case "RADAR":
+                myNewChart = new Chart(ctx).Radar(state.chartData.radarSeriesDataContainer,state.chartData.chartConfiguration);
+                
+                break;
+        }
+        
     };
     
 
