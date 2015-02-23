@@ -15,7 +15,7 @@
  */
 package org.vaadin.addons.chart.js;
 
-import org.vaadin.addons.chart.js.data.AbstractSeriesDataContainer;
+import java.io.Serializable;
 import org.vaadin.addons.chart.js.data.BarSeriesDataContainer;
 import org.vaadin.addons.chart.js.data.LineSeriesDataContainer;
 import org.vaadin.addons.chart.js.data.RadarSeriesDataContainer;
@@ -24,7 +24,7 @@ import org.vaadin.addons.chart.js.data.RadarSeriesDataContainer;
  *
  * @author Fatalix
  */
-public class ChartData {
+public class ChartData implements Serializable{
     
     public int componentID;
     public ChartConfiguration chartConfiguration;

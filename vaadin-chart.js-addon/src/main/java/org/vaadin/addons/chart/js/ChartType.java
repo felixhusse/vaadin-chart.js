@@ -15,11 +15,13 @@
  */
 package org.vaadin.addons.chart.js;
 
+import java.io.Serializable;
+
 /**
  *
  * @author felix.husse
  */
-public enum ChartType {
+public enum ChartType implements Serializable{
     LINE,BAR,RADAR,POLAR,PIE,DOUGHNUT;
     
     

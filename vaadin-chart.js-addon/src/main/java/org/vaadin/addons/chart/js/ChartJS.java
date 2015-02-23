@@ -18,7 +18,6 @@ package org.vaadin.addons.chart.js;
 import com.vaadin.annotations.JavaScript;
 import com.vaadin.ui.AbstractJavaScriptComponent;
 import java.util.List;
-import org.vaadin.addons.chart.js.data.AbstractSeriesDataContainer;
 import org.vaadin.addons.chart.js.data.AbstractSeriesDataSet;
 import org.vaadin.addons.chart.js.data.BarSeriesDataContainer;
 import org.vaadin.addons.chart.js.data.BarSeriesDataSet;
@@ -30,6 +29,7 @@ import org.vaadin.addons.chart.js.data.RadarSeriesDataSet;
 /**
  *
  * @author felix.husse
+ * @param <T>
  */
 @JavaScript({"vaadin://chartjs/Chart.min.js", "chartjs-connector.js"})
 public class ChartJS<T extends AbstractSeriesDataSet> extends AbstractJavaScriptComponent {
@@ -48,27 +48,23 @@ public class ChartJS<T extends AbstractSeriesDataSet> extends AbstractJavaScript
         chartData.chartConfiguration = chartConfiguration;
         
         if(dataSets.get(0) instanceof RadarSeriesDataSet) {
-            System.out.println("RadarChart Found");
             RadarSeriesDataContainer dataContainer = new RadarSeriesDataContainer();
             dataContainer.setLabels(labels);
             dataContainer.setDatasets((List<RadarSeriesDataSet>)dataSets);
             chartData.chartType = ChartType.RADAR;
             chartData.radarSeriesDataContainer = dataContainer;
         } else if(dataSets.get(0) instanceof LineSeriesDataSet) {
-            System.out.println("LineChart Found");
             LineSeriesDataContainer dataContainer = new LineSeriesDataContainer();
             dataContainer.setLabels(labels);
             dataContainer.setDatasets((List<LineSeriesDataSet>)dataSets);
             chartData.chartType = ChartType.LINE;
             chartData.lineSeriesDataContainer = dataContainer;
         } else if(dataSets.get(0) instanceof BarSeriesDataSet) {
-            System.out.println("BarChart Found");
             BarSeriesDataContainer dataContainer = new BarSeriesDataContainer();
             dataContainer.setLabels(labels);
             dataContainer.setDatasets((List<BarSeriesDataSet>)dataSets);
             chartData.chartType = ChartType.BAR;
             chartData.barSeriesDataContainer = dataContainer;
-
         }
 
         getState().chartData = chartData;

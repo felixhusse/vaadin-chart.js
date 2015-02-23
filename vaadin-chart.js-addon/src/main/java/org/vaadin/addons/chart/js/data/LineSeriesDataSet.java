@@ -20,10 +20,12 @@ package org.vaadin.addons.chart.js.data;
  * @author felix.husse
  */
 public class LineSeriesDataSet extends AbstractSeriesDataSet{
+
     private String pointColor;
     private String pointStrokeColor;
     private String pointHighlightFill;
     private String pointHighlightStroke;
+    
 
     public String getPointColor() {
         return pointColor;

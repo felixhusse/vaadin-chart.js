@@ -15,11 +15,13 @@
  */
 package org.vaadin.addons.chart.js;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Fatalix
  */
-public class ChartConfiguration {
+public class ChartConfiguration implements Serializable{
     
     // Boolean - If we want to override with a hard coded scale
     public boolean scaleOverride = false;

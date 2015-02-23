@@ -15,13 +15,14 @@
  */
 package org.vaadin.addons.chart.js.data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author felix.husse
  */
-public class AbstractSeriesDataContainer {
+public class AbstractSeriesDataContainer implements Serializable{
     
     private List<String> labels;
     
