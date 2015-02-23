@@ -15,6 +15,7 @@ import org.vaadin.addons.chart.js.ChartConfiguration;
 import org.vaadin.addons.chart.js.ChartJS;
 import org.vaadin.addons.chart.js.data.RadarSeriesDataSet;
 import org.vaadin.addons.chart.js.data.BarSeriesDataSet;
+import org.vaadin.addons.chart.js.data.DoughnutSeriesDataSet;
 import org.vaadin.addons.chart.js.data.LineSeriesDataSet;
 import org.vaadin.addons.chart.js.data.PieSeriesDataSet;
 
@@ -47,21 +48,19 @@ public class DemoUI extends UI {
             pieChart.setHeight(340, Unit.PIXELS);
             pieChart.setWidth(600, Unit.PIXELS);
             
+            ChartJS<DoughnutSeriesDataSet> doughnutChart = createDoughnutChart();
+            doughnutChart.setHeight(340, Unit.PIXELS);
+            doughnutChart.setWidth(600, Unit.PIXELS);
             
             final HorizontalLayout chartLayout = new HorizontalLayout();
-            chartLayout.addStyleName("row");
-            chartLayout.setSizeFull();
-            chartLayout.addComponents(radarChart,barChart,lineChart);
-            
-            final HorizontalLayout chartLayout2 = new HorizontalLayout();
-            chartLayout2.addStyleName("row");
-            chartLayout2.setSizeFull();
-            chartLayout2.addComponents(pieChart);
+            chartLayout.addStyleName("wrapping");
+            chartLayout.setSpacing(true);
+            chartLayout.addComponents(radarChart,barChart,lineChart,doughnutChart,pieChart);
             
             final VerticalLayout layout = new VerticalLayout();
             layout.setStyleName("demoContentLayout");
-            layout.addComponents(chartLayout,chartLayout2);
-            layout.setSizeFull();
+            layout.addComponents(chartLayout);
+            
             setContent(layout);
             
         } catch(Exception ex) {
@@ -86,6 +85,7 @@ public class DemoUI extends UI {
         chartConfiguration.segmentShowStroke = true;
         chartConfiguration.segmentStrokeColor = "#fff";
         chartConfiguration.segmentStrokeWidth = 2;
+        chartConfiguration.legendTemplate = "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>";
         return chartConfiguration;
     }
     
@@ -203,6 +203,32 @@ public class DemoUI extends UI {
         ChartJS<PieSeriesDataSet> chartJS = new ChartJS<>(createPieChartConfiguration(),
                                                             Arrays.asList(new String[] {"möp"}),
                                                             Arrays.asList(new PieSeriesDataSet[] {bugs, stories, unplanned}));
+        
+        return chartJS;
+    }
+    
+    private ChartJS<DoughnutSeriesDataSet> createDoughnutChart() {
+        DoughnutSeriesDataSet bugs = new DoughnutSeriesDataSet();
+        bugs.label = "Bugs";
+        bugs.setColor("#919C00");
+        bugs.setHighlight("rgba(145,156,0,0.6)");
+        bugs.setValue(12f);
+        
+        DoughnutSeriesDataSet stories = new DoughnutSeriesDataSet();
+        stories.label = "Stories";
+        stories.setColor("#4F5502");
+        stories.setHighlight("rgba(79,85,2,0.6");
+        stories.setValue(5f);
+        
+        DoughnutSeriesDataSet unplanned = new DoughnutSeriesDataSet();
+        unplanned.label = "Unplanned";
+        unplanned.setColor("#082A39");
+        unplanned.setHighlight("rgba(8,42,57,0.6)");
+        unplanned.setValue(3f);
+        
+        ChartJS<DoughnutSeriesDataSet> chartJS = new ChartJS<>(createPieChartConfiguration(),
+                                                            Arrays.asList(new String[] {"super"}),
+                                                            Arrays.asList(new DoughnutSeriesDataSet[] {bugs, stories, unplanned}));
         
         return chartJS;
     }

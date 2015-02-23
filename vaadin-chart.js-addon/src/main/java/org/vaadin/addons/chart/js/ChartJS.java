@@ -16,11 +16,14 @@
 package org.vaadin.addons.chart.js;
 
 import com.vaadin.annotations.JavaScript;
+import com.vaadin.annotations.StyleSheet;
 import com.vaadin.ui.AbstractJavaScriptComponent;
 import java.util.List;
 import org.vaadin.addons.chart.js.data.AbstractSeriesDataSet;
 import org.vaadin.addons.chart.js.data.BarSeriesDataContainer;
 import org.vaadin.addons.chart.js.data.BarSeriesDataSet;
+import org.vaadin.addons.chart.js.data.DoughnutDataContainer;
+import org.vaadin.addons.chart.js.data.DoughnutSeriesDataSet;
 import org.vaadin.addons.chart.js.data.LineSeriesDataContainer;
 import org.vaadin.addons.chart.js.data.LineSeriesDataSet;
 import org.vaadin.addons.chart.js.data.PieDataContainer;
@@ -34,12 +37,15 @@ import org.vaadin.addons.chart.js.data.RadarSeriesDataSet;
  * @param <T>
  */
 @JavaScript({"vaadin://chartjs/Chart.min.js", "chartjs-connector.js"})
+@StyleSheet({"vaadin://chartjs/chartjs-styles.css"})
 public class ChartJS<T extends AbstractSeriesDataSet> extends AbstractJavaScriptComponent {
 
     private static int componentCount = 0;
-
+    
     private final int componentId;
 
+    
+    
     public ChartJS(ChartConfiguration chartConfiguration, List<String> labels, List<T> dataSets) {
         super();
         componentId = componentCount;
@@ -81,6 +87,21 @@ public class ChartJS<T extends AbstractSeriesDataSet> extends AbstractJavaScript
             }
             chartData.chartType = ChartType.PIE;
             chartData.pieSeriesDataContainer = dcs;
+        } else if(dataSets.get(0) instanceof DoughnutSeriesDataSet) {
+            
+            DoughnutDataContainer[] dcs = new DoughnutDataContainer[dataSets.size()];
+            int counter = 0;
+            for (DoughnutSeriesDataSet dataSet : (List<DoughnutSeriesDataSet>)dataSets) {
+                DoughnutDataContainer dataContainer = new DoughnutDataContainer();
+                dataContainer.setColor(dataSet.getColor());
+                dataContainer.setHighlight(dataSet.getHighlight());
+                dataContainer.setLabel(dataSet.label);
+                dataContainer.setValue(dataSet.getValue());
+                dcs[counter] = dataContainer;
+                counter++;
+            }
+            chartData.chartType = ChartType.DOUGHNUT;
+            chartData.doughnutDataContainer = dcs;
         }
 
         getState().chartData = chartData;
