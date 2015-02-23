@@ -59,11 +59,11 @@ public class DemoUI extends UI {
         }
     }
 
-    private ChartConfiguration createChartConfiguration() {
+    private ChartConfiguration createChartConfiguration(boolean datasetFill, boolean bezier) {
         ChartConfiguration chartConfiguration = new ChartConfiguration();
         chartConfiguration.animation = true;
-        chartConfiguration.datasetFill = false;
-        chartConfiguration.bezierCurve = false;
+        chartConfiguration.datasetFill = datasetFill;
+        chartConfiguration.bezierCurve = bezier;
         chartConfiguration.scaleBeginAtZero = true;
         chartConfiguration.tooltipTemplate = "<%=datasetLabel%>: <%= value %>";
         chartConfiguration.multiTooltipTemplate = "<%=datasetLabel%>: <%= value %>";
@@ -77,24 +77,27 @@ public class DemoUI extends UI {
         
         LineSeriesDataSet velocity = new LineSeriesDataSet();
         velocity.label = "Velocity";
+        velocity.setPointColor("#919C00");
         velocity.setStrokeColor("#919C00");
         velocity.setFillColor("#919C00");
+        velocity.setPointHighlightFill("#fff");
         velocity.setData(Arrays.asList(new Float[] {78f, 108f, 85f, 121f}));
 
         LineSeriesDataSet spDone = new LineSeriesDataSet();
         spDone.label = "SP Done";
         spDone.setStrokeColor("#4F5502");
-        spDone.setFillColor("#4F5502");
-        
+        spDone.setPointColor("#4F5502");
+        spDone.setPointHighlightFill("#fff");
         spDone.setData(Arrays.asList(new Float[] {57f, 90f, 71f, 52f}));
 
         LineSeriesDataSet achievment = new LineSeriesDataSet();
         achievment.label = "Achievment";
         achievment.setStrokeColor("#082A39");
-        achievment.setFillColor("#082A39");
+        achievment.setPointColor("#082A39");
+        achievment.setPointHighlightFill("#fff");
         achievment.setData(Arrays.asList(new Float[] {72f, 87f, 59f, 100f}));
         
-        ChartJS<LineSeriesDataSet> chartJS = new ChartJS<>(createChartConfiguration(),
+        ChartJS<LineSeriesDataSet> chartJS = new ChartJS<>(createChartConfiguration(false,true),
                                                             Arrays.asList(new String[] {"Sprint1", "Sprint2", "Sprint3", "Sprint4"}),
                                                             Arrays.asList(new LineSeriesDataSet[] {spDone, velocity, achievment}));
         return chartJS;
@@ -104,22 +107,25 @@ public class DemoUI extends UI {
         BarSeriesDataSet velocity = new BarSeriesDataSet();
         velocity.label = "Velocity";
         velocity.setFillColor("#919C00");
+        velocity.setHighlightFill("rgba(145,156,0,0.6)");
         //velocity.setStrokeColor("#3F596D");
         velocity.setData(Arrays.asList(new Float[] {78f, 108f, 85f, 121f}));
 
         BarSeriesDataSet spDone = new BarSeriesDataSet();
         spDone.label = "SP Done";
         spDone.setFillColor("#4F5502");
+        spDone.setHighlightFill("rgba(79,85,2,0.6)");
         //spDone.setStrokeColor("#515602");
         spDone.setData(Arrays.asList(new Float[] {57f, 90f, 71f, 52f}));
 
         BarSeriesDataSet achievment = new BarSeriesDataSet();
         achievment.label = "Achievment";
         achievment.setFillColor("#082A39");
+        achievment.setHighlightFill("rgba(8,42,57,0.6)");
         //achievment.setStrokeColor("#9DAA00");
         achievment.setData(Arrays.asList(new Float[] {72f, 87f, 59f, 100f}));
 
-        ChartJS<BarSeriesDataSet> chartJS = new ChartJS<>(createChartConfiguration(),
+        ChartJS<BarSeriesDataSet> chartJS = new ChartJS<>(createChartConfiguration(false,false),
                                                             Arrays.asList(new String[] {"Sprint1", "Sprint2", "Sprint3", "Sprint4"}),
                                                             Arrays.asList(new BarSeriesDataSet[] {spDone, velocity, achievment}));
         
@@ -130,36 +136,30 @@ public class DemoUI extends UI {
 
         RadarSeriesDataSet velocity = new RadarSeriesDataSet();
         velocity.label = "Velocity";
-        velocity.setFillColor("#3F596D");
-        velocity.setStrokeColor("#3F596D");
-        velocity.setPointColor("#3F596D");
-        velocity.setPointStrokeColor("#fff");
+        velocity.setFillColor("rgba(145,156,0,0.2)");
+        velocity.setStrokeColor("#919C00");
+        velocity.setPointColor("#919C00");
         velocity.setPointHighlightFill("#fff");
-        velocity.setPointHighlightStroke("#3F596D");
-        velocity.setData(Arrays.asList(new Float[] {78f, 108f, 85f, 121f}));
+        velocity.setData(Arrays.asList(new Float[] {8f, 10f, 13f, 12f,9f}));
 
         RadarSeriesDataSet spDone = new RadarSeriesDataSet();
         spDone.label = "SP Done";
-        //dataSet.setFillColor("rgba(220,220,220,0.2)");
-        spDone.setStrokeColor("#515602");
-        spDone.setPointColor("#515602");
-        spDone.setPointStrokeColor("#fff");
+        spDone.setFillColor("rgba(79,85,2,0.2)");
+        spDone.setStrokeColor("#4F5502");
+        spDone.setPointColor("#4F5502");
         spDone.setPointHighlightFill("#fff");
-        spDone.setPointHighlightStroke("#515602");
-        spDone.setData(Arrays.asList(new Float[] {57f, 90f, 71f, 52f}));
-
+        spDone.setData(Arrays.asList(new Float[] {57f, 53f, 41f, 52f,66f}));
+        //082A39
         RadarSeriesDataSet achievment = new RadarSeriesDataSet();
         achievment.label = "Achievment";
-        //dataSet.setFillColor("rgba(220,220,220,0.2)");
-        achievment.setStrokeColor("#9DAA00");
-        achievment.setPointColor("#9DAA00");
-        achievment.setPointStrokeColor("#fff");
+        achievment.setFillColor("rgba(8,42,57,0.2)");
+        achievment.setStrokeColor("#082A39");
+        achievment.setPointColor("#082A39");
         achievment.setPointHighlightFill("#fff");
-        achievment.setPointHighlightStroke("#9DAA00");
-        achievment.setData(Arrays.asList(new Float[] {72f, 87f, 59f, 100f}));
+        achievment.setData(Arrays.asList(new Float[] {72f, 87f, 59f, 100f, 60f}));
 
-        ChartJS<RadarSeriesDataSet> chartJS = new ChartJS<>(createChartConfiguration(),
-                                                            Arrays.asList(new String[] {"Sprint1", "Sprint2", "Sprint3", "Sprint4"}),
+        ChartJS<RadarSeriesDataSet> chartJS = new ChartJS<>(createChartConfiguration(false,false),
+                                                            Arrays.asList(new String[] {"Sprint1", "Sprint2", "Sprint3", "Sprint4", "Sprint5"}),
                                                             Arrays.asList(new RadarSeriesDataSet[] {spDone, velocity, achievment}));
 
         return chartJS;
