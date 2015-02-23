@@ -16,6 +16,7 @@ import org.vaadin.addons.chart.js.ChartJS;
 import org.vaadin.addons.chart.js.data.RadarSeriesDataSet;
 import org.vaadin.addons.chart.js.data.BarSeriesDataSet;
 import org.vaadin.addons.chart.js.data.LineSeriesDataSet;
+import org.vaadin.addons.chart.js.data.PieSeriesDataSet;
 
 @Theme("demo")
 @Title("ChartJS Add-on Demo")
@@ -42,18 +43,27 @@ public class DemoUI extends UI {
             lineChart.setHeight(340, Unit.PIXELS);
             lineChart.setWidth(600, Unit.PIXELS);
             
+            ChartJS<PieSeriesDataSet> pieChart = createPieChart();
+            pieChart.setHeight(340, Unit.PIXELS);
+            pieChart.setWidth(600, Unit.PIXELS);
+            
             
             final HorizontalLayout chartLayout = new HorizontalLayout();
             chartLayout.addStyleName("row");
             chartLayout.setSizeFull();
             chartLayout.addComponents(radarChart,barChart,lineChart);
             
+            final HorizontalLayout chartLayout2 = new HorizontalLayout();
+            chartLayout2.addStyleName("row");
+            chartLayout2.setSizeFull();
+            chartLayout2.addComponents(pieChart);
             
             final VerticalLayout layout = new VerticalLayout();
             layout.setStyleName("demoContentLayout");
-            layout.addComponents(chartLayout);
+            layout.addComponents(chartLayout,chartLayout2);
             layout.setSizeFull();
             setContent(layout);
+            
         } catch(Exception ex) {
             ex.printStackTrace(System.err);
         }
@@ -67,11 +77,17 @@ public class DemoUI extends UI {
         chartConfiguration.scaleBeginAtZero = true;
         chartConfiguration.tooltipTemplate = "<%=datasetLabel%>: <%= value %>";
         chartConfiguration.multiTooltipTemplate = "<%=datasetLabel%>: <%= value %>";
-
         return chartConfiguration;
     }
     
-    
+    private ChartConfiguration createPieChartConfiguration() {
+        ChartConfiguration chartConfiguration = new ChartConfiguration();
+        chartConfiguration.animation = true;
+        chartConfiguration.segmentShowStroke = true;
+        chartConfiguration.segmentStrokeColor = "#fff";
+        chartConfiguration.segmentStrokeWidth = 2;
+        return chartConfiguration;
+    }
     
     private ChartJS<LineSeriesDataSet> createLineChart() {
         
@@ -162,6 +178,32 @@ public class DemoUI extends UI {
                                                             Arrays.asList(new String[] {"Sprint1", "Sprint2", "Sprint3", "Sprint4", "Sprint5"}),
                                                             Arrays.asList(new RadarSeriesDataSet[] {spDone, velocity, achievment}));
 
+        return chartJS;
+    }
+    
+    private ChartJS<PieSeriesDataSet> createPieChart() {
+        PieSeriesDataSet bugs = new PieSeriesDataSet();
+        bugs.label = "Bugs";
+        bugs.setColor("#919C00");
+        bugs.setHighlight("rgba(145,156,0,0.6)");
+        bugs.setValue(12f);
+        
+        PieSeriesDataSet stories = new PieSeriesDataSet();
+        stories.label = "Stories";
+        stories.setColor("#4F5502");
+        stories.setHighlight("rgba(79,85,2,0.6");
+        stories.setValue(5f);
+        
+        PieSeriesDataSet unplanned = new PieSeriesDataSet();
+        unplanned.label = "Unplanned";
+        unplanned.setColor("#082A39");
+        unplanned.setHighlight("rgba(8,42,57,0.6)");
+        unplanned.setValue(3f);
+        
+        ChartJS<PieSeriesDataSet> chartJS = new ChartJS<>(createPieChartConfiguration(),
+                                                            Arrays.asList(new String[] {"möp"}),
+                                                            Arrays.asList(new PieSeriesDataSet[] {bugs, stories, unplanned}));
+        
         return chartJS;
     }
 }

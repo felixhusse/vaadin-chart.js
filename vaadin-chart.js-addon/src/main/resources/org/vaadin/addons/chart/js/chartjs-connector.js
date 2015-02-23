@@ -30,7 +30,7 @@ window.org_vaadin_addons_chart_js_ChartJS = function () {
         var width = parseInt(cs.getPropertyValue('width'), 10);
         var height = parseInt(cs.getPropertyValue('height'), 10);
         e.innerHTML = e.innerHTML + "<canvas id='"+canvasID+"' width='"+width+"' height='"+height+"'></canvas>";
-
+        
         var ctx = document.getElementById(canvasID).getContext("2d");
         switch (state.chartData.chartType) {
             case "LINE":
@@ -41,6 +41,9 @@ window.org_vaadin_addons_chart_js_ChartJS = function () {
                 break;
             case "RADAR":
                 myNewChart = new Chart(ctx).Radar(state.chartData.radarSeriesDataContainer,state.chartData.chartConfiguration);
+                break;
+            case "PIE":
+                myNewChart = new Chart(ctx).Pie(state.chartData.pieSeriesDataContainer,state.chartData.chartConfiguration);
                 break;
         }
     };

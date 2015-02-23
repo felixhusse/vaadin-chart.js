@@ -74,6 +74,11 @@ public class ChartConfiguration implements Serializable{
     public boolean datasetFill = true;
     //String - A legend template
     public String legendTemplate = "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>";
-
+    
+    public boolean segmentShowStroke = true;
+    
+    public String segmentStrokeColor;
+    
+    public int segmentStrokeWidth  = 2;
     
 }

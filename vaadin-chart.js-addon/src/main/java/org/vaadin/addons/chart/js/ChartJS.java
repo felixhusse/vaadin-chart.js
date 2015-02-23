@@ -23,6 +23,8 @@ import org.vaadin.addons.chart.js.data.BarSeriesDataContainer;
 import org.vaadin.addons.chart.js.data.BarSeriesDataSet;
 import org.vaadin.addons.chart.js.data.LineSeriesDataContainer;
 import org.vaadin.addons.chart.js.data.LineSeriesDataSet;
+import org.vaadin.addons.chart.js.data.PieDataContainer;
+import org.vaadin.addons.chart.js.data.PieSeriesDataSet;
 import org.vaadin.addons.chart.js.data.RadarSeriesDataContainer;
 import org.vaadin.addons.chart.js.data.RadarSeriesDataSet;
 
@@ -65,6 +67,20 @@ public class ChartJS<T extends AbstractSeriesDataSet> extends AbstractJavaScript
             dataContainer.setDatasets((List<BarSeriesDataSet>)dataSets);
             chartData.chartType = ChartType.BAR;
             chartData.barSeriesDataContainer = dataContainer;
+        } else if(dataSets.get(0) instanceof PieSeriesDataSet) {
+            PieDataContainer[] dcs = new PieDataContainer[dataSets.size()];
+            int counter = 0;
+            for (PieSeriesDataSet dataSet : (List<PieSeriesDataSet>)dataSets) {
+                PieDataContainer dataContainer = new PieDataContainer();
+                dataContainer.setColor(dataSet.getColor());
+                dataContainer.setHighlight(dataSet.getHighlight());
+                dataContainer.setLabel(dataSet.label);
+                dataContainer.setValue(dataSet.getValue());
+                dcs[counter] = dataContainer;
+                counter++;
+            }
+            chartData.chartType = ChartType.PIE;
+            chartData.pieSeriesDataContainer = dcs;
         }
 
         getState().chartData = chartData;

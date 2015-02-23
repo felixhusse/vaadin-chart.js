@@ -18,6 +18,7 @@ package org.vaadin.addons.chart.js;
 import java.io.Serializable;
 import org.vaadin.addons.chart.js.data.BarSeriesDataContainer;
 import org.vaadin.addons.chart.js.data.LineSeriesDataContainer;
+import org.vaadin.addons.chart.js.data.PieDataContainer;
 import org.vaadin.addons.chart.js.data.RadarSeriesDataContainer;
 
 /**
@@ -32,5 +33,6 @@ public class ChartData implements Serializable{
     public LineSeriesDataContainer lineSeriesDataContainer;
     public BarSeriesDataContainer barSeriesDataContainer;
     public RadarSeriesDataContainer radarSeriesDataContainer;
+    public PieDataContainer[] pieSeriesDataContainer;
 
 }
