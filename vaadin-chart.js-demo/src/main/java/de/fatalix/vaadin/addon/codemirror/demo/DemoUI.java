@@ -13,6 +13,7 @@ import com.vaadin.ui.VerticalLayout;
 import java.util.Arrays;
 import org.vaadin.addons.chart.js.ChartConfiguration;
 import org.vaadin.addons.chart.js.ChartJS;
+import org.vaadin.addons.chart.js.color.ChartColor;
 import org.vaadin.addons.chart.js.data.RadarSeriesDataSet;
 import org.vaadin.addons.chart.js.data.BarSeriesDataSet;
 import org.vaadin.addons.chart.js.data.DoughnutSeriesDataSet;
@@ -210,20 +211,20 @@ public class DemoUI extends UI {
     private ChartJS<DoughnutSeriesDataSet> createDoughnutChart() {
         DoughnutSeriesDataSet bugs = new DoughnutSeriesDataSet();
         bugs.label = "Bugs";
-        bugs.setColor("#919C00");
-        bugs.setHighlight("rgba(145,156,0,0.6)");
+        bugs.setColor(ChartColor.CHARTJS_RED.getRGBCode());
+        bugs.setHighlight(ChartColor.CHARTJS_RED.getHightlightCode(0.95f));
         bugs.setValue(12f);
         
         DoughnutSeriesDataSet stories = new DoughnutSeriesDataSet();
         stories.label = "Stories";
-        stories.setColor("#4F5502");
-        stories.setHighlight("rgba(79,85,2,0.6");
+        stories.setColor(ChartColor.CHARTJS_BLUE.getRGBCode());
+        stories.setHighlight(ChartColor.CHARTJS_BLUE.getHightlightCode(0.95f));
         stories.setValue(5f);
         
         DoughnutSeriesDataSet unplanned = new DoughnutSeriesDataSet();
         unplanned.label = "Unplanned";
-        unplanned.setColor("#082A39");
-        unplanned.setHighlight("rgba(8,42,57,0.6)");
+        unplanned.setColor(ChartColor.CHARTJS_VIOLETTE.getRGBCode());
+        unplanned.setHighlight(ChartColor.CHARTJS_VIOLETTE.getHightlightCode(0.95f));
         unplanned.setValue(3f);
         
         ChartJS<DoughnutSeriesDataSet> chartJS = new ChartJS<>(createPieChartConfiguration(),
