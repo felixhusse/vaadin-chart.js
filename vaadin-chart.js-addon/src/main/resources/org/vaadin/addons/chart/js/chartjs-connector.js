@@ -28,14 +28,14 @@ window.org_vaadin_addons_chart_js_ChartJS = function () {
 
     initChartJS = function (state) {
         var canvasID = "chartjs-"+state.chartData.componentID;
-        var legendID = "chartjs-legend-"+state.chartData.componentID;
+        //var legendID = "chartjs-legend-"+state.chartData.componentID;
         var cs = getComputedStyle(e);
-        var width = parseInt(cs.getPropertyValue('width'), 10)-120;
+        var width = parseInt(cs.getPropertyValue('width'), 10);
         
         var height = parseInt(cs.getPropertyValue('height'), 10);
         
-        var innerHTML_TEXT = "<div id='container'><canvas id='"+canvasID+"' width='"+width+"' height='"+height+"'></canvas>"
-                        +"<div style='width: 100px; height: "+height+"px;'id='"+legendID+"'></div></div>";
+        var innerHTML_TEXT = "<canvas id='"+canvasID+"' width='"+width+"' height='"+height+"'></canvas>";
+                        //+"<div style='width: 100px; height: "+height+"px;'id='"+legendID+"'></div></div>";
         
         e.innerHTML = e.innerHTML + innerHTML_TEXT;
         
@@ -55,11 +55,8 @@ window.org_vaadin_addons_chart_js_ChartJS = function () {
                 break;
             case "DOUGHNUT":
                 myNewChart = new Chart(ctx).Doughnut(state.chartData.doughnutDataContainer,state.chartData.chartConfiguration);
-                var legendHolder = document.getElementById(legendID);
-                console.warn(legendHolder);
-                console.warn("myNewChart.generateLegend()");
-                console.warn(myNewChart.generateLegend());
-                legendHolder.innerHTML = myNewChart.generateLegend();
+                //var legendHolder = document.getElementById(legendID);
+                //legendHolder.innerHTML = myNewChart.generateLegend();
                 break;
         }
     };

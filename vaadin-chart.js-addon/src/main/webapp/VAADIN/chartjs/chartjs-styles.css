@@ -20,8 +20,6 @@ limitations under the License.
 .doughnut-legend {
   list-style: none;
   position: absolute;
-  right: 8px;
-  top: 0;
 }
 .doughnut-legend li {
   display: block;

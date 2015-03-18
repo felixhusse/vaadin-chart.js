@@ -34,28 +34,29 @@ public class DemoUI extends UI {
     protected void init(final VaadinRequest request) {
         try {
             ChartJS<RadarSeriesDataSet> radarChart = createRadarChart();
-            radarChart.setHeight(340, Unit.PIXELS);
-            radarChart.setWidth(600, Unit.PIXELS);
+            radarChart.setHeight(250, Unit.PIXELS);
+            radarChart.setWidth(250, Unit.PIXELS);
             
             ChartJS<BarSeriesDataSet> barChart = createBarChart();
-            barChart.setHeight(340, Unit.PIXELS);
-            barChart.setWidth(600, Unit.PIXELS);
+            barChart.setHeight(250, Unit.PIXELS);
+            barChart.setWidth(250, Unit.PIXELS);
             
             ChartJS<LineSeriesDataSet> lineChart = createLineChart();
-            lineChart.setHeight(340, Unit.PIXELS);
-            lineChart.setWidth(600, Unit.PIXELS);
+            lineChart.setHeight(250, Unit.PIXELS);
+            lineChart.setWidth(250, Unit.PIXELS);
             
             ChartJS<PieSeriesDataSet> pieChart = createPieChart();
-            pieChart.setHeight(340, Unit.PIXELS);
-            pieChart.setWidth(600, Unit.PIXELS);
+            pieChart.setHeight(250, Unit.PIXELS);
+            pieChart.setWidth(250, Unit.PIXELS);
             
             ChartJS<DoughnutSeriesDataSet> doughnutChart = createDoughnutChart();
-            doughnutChart.setHeight(340, Unit.PIXELS);
-            doughnutChart.setWidth(600, Unit.PIXELS);
+            doughnutChart.setHeight(250, Unit.PIXELS);
+            doughnutChart.setWidth(250, Unit.PIXELS);
             
             final HorizontalLayout chartLayout = new HorizontalLayout();
             chartLayout.addStyleName("wrapping");
             chartLayout.setSpacing(true);
+            chartLayout.setMargin(true);
             chartLayout.addComponents(radarChart,barChart,lineChart,doughnutChart,pieChart);
             
             final VerticalLayout layout = new VerticalLayout();
