@@ -37,6 +37,7 @@ public class DemoUI extends UI {
             radarChart.setHeight(250, Unit.PIXELS);
             radarChart.setWidth(250, Unit.PIXELS);
             
+            
             ChartJS<BarSeriesDataSet> barChart = createBarChart();
             barChart.setHeight(250, Unit.PIXELS);
             barChart.setWidth(250, Unit.PIXELS);
