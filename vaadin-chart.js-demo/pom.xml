@@ -2,22 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.vaadin.addons</groupId>
-    <artifactId>vaadin-chart.js-demo</artifactId>
+    
+    <parent>
+        <artifactId>chart.js-parent</artifactId>
+        <groupId>de.fatalix</groupId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
+    
+    <groupId>de.fatalix</groupId>
+    <artifactId>chart.js-demo</artifactId>
     <packaging>war</packaging>
     <name>Chart.js Add-on Demo ${project.version}</name>
 	
-	<parent>
-        <artifactId>vaadin-chart.js-parent</artifactId>
-        <groupId>org.vaadin.addons</groupId>
-        <version>1.0.1-SNAPSHOT</version>
-    </parent>
-	
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <vaadin.version>7.4.1</vaadin.version>
-        <vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
-    </properties>
 
     <licenses>
         <license>
@@ -60,34 +56,29 @@
     <dependencies>
         <dependency>
             <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-server</artifactId> 
-            <version>${vaadin.version}</version>           
+            <artifactId>vaadin-server</artifactId>        
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-shared</artifactId>    
-            <version>${vaadin.version}</version>        
+            <artifactId>vaadin-shared</artifactId>        
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-themes</artifactId>
-            <version>${vaadin.version}</version>            
+            <artifactId>vaadin-themes</artifactId>         
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-client-compiled</artifactId>   
-            <version>${vaadin.version}</version>         
+            <artifactId>vaadin-client-compiled</artifactId>         
         </dependency>
         
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>vaadin-chart.js-addon</artifactId>
+            <artifactId>chart.js-addon</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
@@ -176,6 +167,11 @@
                   </execution>
                 </executions>
               </plugin>
+              <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>1.1.0.Alpha1</version>
+            </plugin>
         </plugins>
     </build>
 

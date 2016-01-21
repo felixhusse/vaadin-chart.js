@@ -2,8 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.vaadin.addons</groupId>
-    <artifactId>vaadin-chart.js-addon</artifactId>
+    
+    <parent>
+        <artifactId>chart.js-parent</artifactId>
+        <groupId>de.fatalix</groupId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
+    
+    
+    <groupId>de.fatalix</groupId>
+    <artifactId>chart.js-addon</artifactId>
     <packaging>jar</packaging>
 
     <name>Chart.js Add-on</name>
@@ -12,15 +20,11 @@
 
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <vaadin.version>7.4.1</vaadin.version>
-        <vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
-
         <!-- ZIP Manifest fields -->
         <Implementation-Version>${project.version}</Implementation-Version>
         <!-- Must not change this because of the Directory -->
         <Implementation-Title>Chart.js Add-on</Implementation-Title>
-        <Implementation-Vendor>Felix Husse</Implementation-Vendor>
+        <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
         <Vaadin-License-Title>Apache License 2.0</Vaadin-License-Title>
         <Vaadin-Addon>${artifactId}.jar</Vaadin-Addon>
     </properties>
@@ -59,12 +63,10 @@
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-server</artifactId>
-            <version>${vaadin.version}</version>
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-client</artifactId>
-            <version>${vaadin.version}</version>
             <scope>provided</scope>
         </dependency>
             
@@ -199,10 +201,9 @@
         <resources>
             <resource>
                 <directory>src/main/java</directory>
-                <!--
                 <excludes>
                     <exclude>rebel.xml</exclude>
-                </excludes>-->
+                </excludes>
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
@@ -214,12 +215,5 @@
         </resources>
 
     </build>
-
-    <scm>
-        
-        <connection>scm:git:git@github.com:felixhusse/vaadin-chart.js.git</connection>
-        <developerConnection>scm:git:git@github.com:felixhusse/vaadin-chart.js.git</developerConnection>
-        <url>https://github.com/felixhusse/vaadin-chart.js.git</url>
-    </scm>
 
 </project>

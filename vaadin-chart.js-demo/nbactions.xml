@@ -43,4 +43,18 @@
                 <goal>-U</goal>
             </goals>
         </action>
+        <action>
+            <actionName>CUSTOM-deploy</actionName>
+            <displayName>wildfly-deploy</displayName>
+            <goals>
+                <goal>wildfly:deploy</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-undeploy</actionName>
+            <displayName>wildfly-undeploy</displayName>
+            <goals>
+                <goal>wildfly:undeploy</goal>
+            </goals>
+        </action>
     </actions>
